@@ -1,12 +1,13 @@
 from pytube import YouTube
 import os
+import getpass
 
 yt = YouTube(input("Enter the URL of the video you want to download to an mp3 file: "))
 
 video = yt.streams.filter(only_audio=True).first()
 
 #Change this to the directory you want to download to (I have it set to my downloads folder)
-destination = "C:/Users/USER/Downloads"
+destination = f"C:\\Users\\{getpass.getuser()}\\Downloads"
 
 out_file = video.download(output_path=destination)
 
@@ -16,4 +17,5 @@ os.rename(out_file, new_file)
 
 
 
-print("Downloaded")
+print("Downloaded!")
+input()
