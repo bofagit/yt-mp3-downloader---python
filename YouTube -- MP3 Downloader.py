@@ -1,5 +1,16 @@
-from pytube import YouTube
 import os
+
+try:
+  from pytube import YouTube
+except:
+  answer = input("pytube was not detected, would you like to install it with pip? (y/N): ")
+  if "y" in answer.lower():
+    os.system("pip install pytube")
+    from pytube import YouTube
+  else:
+    print("This program will not work without pytube, exiting...")
+    exit(1)
+
 import getpass
 
 yt = YouTube(input("Enter the URL of the video you want to download to an mp3 file: "))
